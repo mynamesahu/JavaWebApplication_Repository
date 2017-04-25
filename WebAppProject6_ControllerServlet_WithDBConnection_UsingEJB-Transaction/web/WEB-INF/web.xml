@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- TestControllerServlet -->
+    <servlet>
+        <servlet-name>TestControllerServlet</servlet-name>
+        <servlet-class>controller.ControllerServletInvokingEJBSessionBean</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestControllerServlet</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+    <!-- Session configuration Details -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <!-- JDBC data source Reference -->
+    <!--resource-ref>
+        <description>connects to "mytestschema" database from this application</description>
+        <res-ref-name>jdbc/myTestDataSource</res-ref-name>
+        <res-type>javax.sql.ConnectionPoolDataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref-->
+</web-app>
