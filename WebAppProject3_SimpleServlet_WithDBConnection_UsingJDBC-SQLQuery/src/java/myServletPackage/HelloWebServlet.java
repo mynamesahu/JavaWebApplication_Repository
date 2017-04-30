@@ -11,9 +11,16 @@ import javax.sql.*;
 import javax.naming.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 
 
 public class HelloWebServlet extends HttpServlet {
+    
+    final static Logger logger = Logger.getLogger(HelloWebServlet.class);
+    
+    
 
     InitialContext ctx = null;
     DataSource ds = null;
@@ -22,27 +29,18 @@ public class HelloWebServlet extends HttpServlet {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
+    String sql = "";
+    String customerName = null;
     
 
-    String sql = "SELECT cust_name, cust_address FROM customer WHERE cust_name=?";
-    //String sql = "SELECT * FROM customer";
-
     public void init () throws ServletException {
-        /*try {
-            ctx = new InitialContext();
-            //ds = (DataSource) ctx.lookup("java:comp/env/jdbc/MySQLDataSource");
-            ds = (DataSource) ctx.lookup("jdbc/myTestDataSource");
-            conn = ds.getConnection();
-            ps = conn.prepareStatement(sql);
-            //stmt = conn.createStatement();
+        
+        /* This code is for logging using LOG4J properties file */
+        String prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+        String file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
+        PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
+        /* This code is for logging using LOG4J properties file ....END*/
         }
-        catch (SQLException se) {
-            System.out.println("SQLException: "+se.getMessage());
-        }
-        catch (NamingException ne) {
-            System.out.println("NamingException: "+ne.getMessage());
-        }*/
-    }
 
     public void destroy () {
         /*try {
@@ -96,96 +94,62 @@ public class HelloWebServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
                                     throws ServletException, IOException{
-    
         try {
-                        
-            String customer_name = req.getParameter("customer_name");
+             
             resp.setContentType("text/html");
             PrintWriter writer = resp.getWriter();
             writer.println("<html><body>");
-
-            writer.println("<p>Customer: "+customer_name+"</p>");
             
-            //System.out.println("Prepared Statement before bind variables set:\n\t" + ps.toString());
-            //ps.setString(1, customer_name);
-            //System.out.println("Prepared Statement after bind variables set:\n\t" + ps.toString());
+            //sql = "SELECT * FROM customer";
+            sql = "SELECT cust_name, cust_address FROM customer WHERE cust_name=?";
+    
+            customerName = req.getParameter("customerName");
+            writer.println("<p>Customer: "+customerName+"</p>");
+            logger.info("Information Log :customer name = "+ customerName);
+            logger.debug("Debugged Log");
             
-            //System.out.println(((JDBC4PreparedStatement)ps).asSql());
             
+                       
             ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("jdbc/myTestDataSource");              // Lookup for the Datasource that points to "mytestschema" database
             conn = ds.getConnection();                                          // Open a connection
             
             //stmt = conn.createStatement();                                    // Create a Statement object
             ps = conn.prepareStatement(sql);                                    // Create a PreparedStatement object                                  
-            
-            ps.setString(1, req.getParameter("customer_name"));               // Set the input parameter in the Prepared statement
-            //System.out.println("Prepared Statement after bind variables set:\n\t" + ps.toString());
-            
+            ps.setString(1, customerName);                                    // Set the input parameter in the Prepared statement
+            //ps.setString(1, "Hari"); 
             
             //rs = stmt.executeQuery(sql);                                      // Execute the query through Statement
             rs = ps.executeQuery();                                             // Execute the query through PreparesStatement
             
-            
-            //writer.println("<p>rs.next(): "+rs.next()+"</p>");
-            
-                /*if (!rs.next()){
+                if (!rs.next()){
                   writer.println("<p>Customer does not exist!</p>");
                 }
-                else {*/
+                else {
                     rs.beforeFirst();
                     while(rs.next()) {
                       writer.println("<p>Row number: "+rs.getRow()+"</p>");
                       writer.println("<p>Customer Name: "+rs.getString("cust_name")+"</p>");
                       writer.println("<p>Customer Address: "+rs.getString("cust_address")+"</p>");
                     }
-            
-                /*while(rs.next()){
-                   
-                    //Retrieve by column name
-                    int id  = rs.getInt("cust_id");
-                    String custName = rs.getString("cust_name");
-                    String custAddress = rs.getString("cust_address");
-                  
-                    //Display values
-                    writer.println(" Customer ID: " + id + "<br>");
-                    writer.println(" Customer Name: " + custName + "<br>");
-                    writer.println(" Customer Name: " + custAddress + "<br>");
-                    writer.println("<br>");
-                //}*/
-                //}
+                }
+                    
             writer.println("</body></html>");
-            //writer.close();
+            
             rs.close();
             //stmt.close();
             ps.close();
             conn.close();
-        }catch(SQLException se){                
-            //Handle errors for JDBC
-            se.printStackTrace();
-        }catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
-        }finally{                                   // end try .... catch
-            //finally block used to close resources
-            try{
-                /*if(stmt!=null)
-                    stmt.close();*/
-                if(ps!=null)
-                    ps.close();
-            }catch(SQLException se1){
-                    // nothing we can do
+            }catch(SQLException sqle1){     // End of try block           
+                sqle1.printStackTrace();
+                //logger.debug("Debug SQLExeception message : "+ sqle1.getMessage());
+            }catch(Exception e){
+                e.printStackTrace();
+                logger.debug("Debug Exception message : "+ e.getMessage());
             }
-            try{
-                if(conn!=null)
-                    conn.close();
-            }catch(SQLException se2){
-                se2.printStackTrace();
-            }
-        }//end finally
             
-    }//end doGet()
+    }//End doGet()
   
   
-}
+}//End servlet class
 

@@ -4,6 +4,10 @@
     <servlet>
         <servlet-name>ServletwithDBConnection</servlet-name>
         <servlet-class>myServletPackage.ServletwithDBConnection</servlet-class>
+        <init-param>
+            <param-name>log4j-init-file</param-name>
+            <param-value>WEB-INF/log4j.properties</param-value>
+        </init-param>
     </servlet>
     <!-- Session configuration Details -->
     <servlet>
@@ -23,7 +27,6 @@
             30
         </session-timeout>
     </session-config>
-    
     <resource-ref>
         <description>connects to the database - mytestschema from this application</description>
         <res-ref-name>jdbc/myTestDataSource</res-ref-name>
