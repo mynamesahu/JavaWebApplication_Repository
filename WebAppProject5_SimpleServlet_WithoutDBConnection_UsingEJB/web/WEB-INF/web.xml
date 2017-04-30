@@ -2,15 +2,31 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <!-- TestServletForEJB -->
     <servlet>
-        <servlet-name>TestServletForEJB</servlet-name>
-        <servlet-class>myServletPackage.ServletInvokingEJB</servlet-class>
+        <servlet-name>ServletInvokingEJBBean</servlet-name>
+        <servlet-class>myServletPackage.ServletInvokingEJBBean</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>ServletInvokingSimpleJavaClass</servlet-name>
+        <servlet-class>myServletPackage.ServletInvokingSimpleJavaClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInvokingSimpleBean</servlet-name>
+        <servlet-class>myServletPackage.ServletInvokingSimpleBean</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>TestServletForEJB</servlet-name>
+        <servlet-name>ServletInvokingEJBBean</servlet-name>
         <url-pattern>/testEJB</url-pattern>
     </servlet-mapping>
     <!-- Session configuration Details -->
+    <servlet-mapping>
+        <servlet-name>ServletInvokingSimpleJavaClass</servlet-name>
+        <url-pattern>/testInvokeSimpleClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInvokingSimpleBean</servlet-name>
+        <url-pattern>/testInvokeSimpleBean</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

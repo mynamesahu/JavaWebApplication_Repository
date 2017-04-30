@@ -5,6 +5,7 @@
  */
 package myBeanPackage;
 
+import myEJBBeanPackage.GreetCustomer;
 import javax.ejb.embeddable.EJBContainer;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,7 +40,7 @@ public class BeanToGreetCustomerTest {
     }
 
     /**
-     * Test of sayHello method, of class BeanToGreetCustomer.
+     * Test of sayHello method, of class GreetCustomer.
      */
     @Test
     public void testSayHello() throws Exception {
@@ -49,7 +50,7 @@ public class BeanToGreetCustomerTest {
         
         /** To invoke the test method you have to first instantiate the embeddable EJB container **************************************/
         EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        BeanToGreetCustomer instance = (BeanToGreetCustomer)container.getContext().lookup("java:global/classes/BeanToGreetCustomer");
+        GreetCustomer instance = (GreetCustomer)container.getContext().lookup("java:global/classes/BeanToGreetCustomer");
         /******************************************************************************************************************************/
         
         String actualResult = instance.sayHello(customerName);  // the sayHello() method returns this value (for the above test data) 
