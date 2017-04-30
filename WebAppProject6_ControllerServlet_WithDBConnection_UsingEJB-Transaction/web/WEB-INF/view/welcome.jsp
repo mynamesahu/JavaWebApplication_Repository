@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello, Welcome to my Web site</h1>
-        See the <a href="http://localhost:8080/TestWebAppProject5_ControllerServlet_Using_EJB_forDBtransaction/customer">customer details</a>
+        See the <a href="http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customer">customer details</a>
     </body> 
 </html>
