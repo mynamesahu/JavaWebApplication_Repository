@@ -41,6 +41,7 @@ public class ServletWithoutDBConnection extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet Context Path:- " + request.getContextPath() + "</h1>");
             out.println("<h2>Servlet Path:- " + request.getServletPath() + "</h1>");
+            out.println("<h3>Real Path:- " + getServletContext().getRealPath("/") + "</h3>");
             
             /** Determine Page Hit Count **/
             int hitCount;
