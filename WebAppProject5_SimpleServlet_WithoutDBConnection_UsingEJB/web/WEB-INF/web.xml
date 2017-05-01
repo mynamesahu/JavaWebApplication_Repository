@@ -14,6 +14,10 @@
         <servlet-name>ServletInvokingSimpleBean</servlet-name>
         <servlet-class>myServletPackage.ServletInvokingSimpleBean</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAcceptingFormInputsAndInvokingEJBBeanForHandlingBusinessLogic</servlet-name>
+        <servlet-class>myServletPackage.ServletAcceptingFormInputsAndInvokingEJBBeanForHandlingBusinessLogic</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletInvokingEJBBean</servlet-name>
         <url-pattern>/testEJB</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>ServletInvokingSimpleBean</servlet-name>
         <url-pattern>/testInvokeSimpleBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAcceptingFormInputsAndInvokingEJBBeanForHandlingBusinessLogic</servlet-name>
+        <url-pattern>/testEJBWithFormInput</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
