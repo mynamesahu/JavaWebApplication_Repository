@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sessionBeans;
 
 import entityBeans.Customer;
@@ -10,13 +6,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Sambit
- */
 
 /* 
-This class- "customeFacade.java" is a  EJB 'stateless' session bean that 
+This class- "CustomeFacade.java" is a  EJB 'stateless' session bean that 
     - implements the business logic 
     - and operates on the database table (entity bean - "Customer.java") 
       using the functionalities of "EntityManager" component of JPA 
@@ -44,12 +36,17 @@ public class CustomerFacade extends AbstractFacade<Customer> {
     private EntityManager em;   //Instantiate the "EntityManager" component
     
     
-
+    /*
+    Since CustomerFacade extends the Abstract class, 
+    so it has to implement all the abstract methods of the parent class
+    getEntityManager() is an abstract method in the parent class. so it has to be implemented here.
+    */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
+    
     public CustomerFacade() {
         super(Customer.class);
     }

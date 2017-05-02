@@ -1,26 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
-import java.io.IOException;
+import entityBeans.Customer;
+import java.io.*;
 import java.io.PrintWriter;
+import java.sql.*;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import sessionBeans.CustomerFacade;
 
-/**
- *
- * @author Sambit
- */
+
 public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     
-    @EJB        // injects the EJB
+    Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
+    
+    
+    @EJB                                    // injects the EJB
     private CustomerFacade customerFacade; // Instantiate the session bean
     
     @Override
@@ -32,52 +32,18 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         which is placed in the ServletContext (=> application-scoped variable) 
         that can be accessed by any JSP page 
         */
-        getServletContext().setAttribute("customerDetails",customerFacade.findAll());  
-    }
-            
-    
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
         
-        //response.setContentType("text/html;charset=UTF-8");
-        //try (PrintWriter out = response.getWriter()) {
-            //PrintWriter out = response.getWriter();
-            /* TODO output your page here. You may use following sample code. */
-            /*out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControllerServletInvokingEJBSessionBean</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControllerServletInvokingEJBSessionBean at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");*/
-        //}
+        
+        
+       
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+               
         String path= request.getServletPath();
         if (path.equals("/welcome"))
         {
@@ -95,32 +61,61 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-         
-         
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+        //processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        
+        /* This code is for logging using LOG4J properties file */
+        String prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+        String file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
+        PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
+        out.println("properties file path = "+prefix+file);
+        logger.info("properties file path = "+prefix+file);
+        /* This code is for logging using LOG4J properties file ....END*/
+        
+        
+        String custName = request.getParameter("custName");
+        String custAddress= request.getParameter("custAddress");
+        
+        out.println("customer Name= "+custName);
+        out.println("customer Address= "+custAddress);
+        
+        Customer custObj = new Customer();
+        custObj.setCustId(24);
+        custObj.setCustName(custName);
+        custObj.setCustAddress(custAddress);
+        custObj.setCustEmail("dravid@gmail.com");
+        
+        out.println("customer Name from the custObj= "+custObj.getCustName());
+        out.println("customer Address from the custObj= "+custObj.getCustAddress());
+        try{
+        customerFacade.create(custObj);
+        //customerFacade.getEntityManager().persist(custObj);
+        }
+        catch(Exception e){
+            logger.error(e.getMessage());
+        }
+        //catch(SQLException sqle){
+            //logger.info(sqle.getMessage());
+        //}
+        
+        
+        
+        out.println("customer inserted successfully");
+        
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
