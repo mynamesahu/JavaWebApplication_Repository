@@ -33,10 +33,6 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         that can be accessed by any JSP page 
         */
         getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
-        
-        
-        
-       
     }
      
     @Override
@@ -53,6 +49,10 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         {
             path = "/customerDetails";
         }
+        else if (path.equals("/customerForm")) 
+        {
+            path = "/customerEntryForm";
+        }
         
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + path + ".jsp";
@@ -67,8 +67,7 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+               
         //processRequest(request, response);
         PrintWriter out = response.getWriter();
         
@@ -84,20 +83,17 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         String custName = request.getParameter("custName");
         String custAddress= request.getParameter("custAddress");
         
-        out.println("customer Name= "+custName);
-        out.println("customer Address= "+custAddress);
         
         Customer custObj = new Customer();
-        custObj.setCustId(24);
+        
+        // set the value of Customer entity bean properties with the User Input
         custObj.setCustName(custName);
         custObj.setCustAddress(custAddress);
-        custObj.setCustEmail("dravid@gmail.com");
+        //custObj.setCustEmail("customer@gmail.com");
+        custObj.setCustEmail(custName+"@gmail.com");
         
-        out.println("customer Name from the custObj= "+custObj.getCustName());
-        out.println("customer Address from the custObj= "+custObj.getCustAddress());
         try{
-        customerFacade.create(custObj);
-        //customerFacade.getEntityManager().persist(custObj);
+        customerFacade.create(custObj);             // Insert a new customer record in customer entity
         }
         catch(Exception e){
             logger.error(e.getMessage());
@@ -108,7 +104,17 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         
         
         
-        out.println("customer inserted successfully");
+        //After insert of new record,  put the entire list of customers in an application-scoped variable
+        getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+        
+        
+        // Use RequestDispatcher to forward the request back to customer entry form
+        String url = "/WEB-INF/view/customerEntryForm.jsp?customerInserted=yes";
+        try {
+                request.getRequestDispatcher(url).forward(request, response);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         
     }
 
