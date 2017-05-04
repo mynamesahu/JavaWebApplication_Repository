@@ -13,8 +13,9 @@
     <servlet-mapping>
         <servlet-name>ControllerServletInvokingEJBSessionBean</servlet-name>
         <url-pattern>/welcome</url-pattern>
-        <url-pattern>/customer</url-pattern>
+        <url-pattern>/customerDetails</url-pattern>
         <url-pattern>/customerForm</url-pattern>
+        <url-pattern>/customerEditForm</url-pattern>
     </servlet-mapping>
     <!-- Session configuration Details -->
     <session-config>

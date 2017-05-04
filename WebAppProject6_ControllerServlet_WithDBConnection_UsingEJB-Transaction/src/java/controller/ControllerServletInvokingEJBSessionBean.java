@@ -17,11 +17,17 @@ import sessionBeans.CustomerFacade;
 
 public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     
-    Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
-    
+    /** Declare the variables **/
+        
+          
+        Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
+        
+        Customer custObj;
+        
+    /** Declare the variables ... END**/
     
     @EJB                                    // injects the EJB
-    private CustomerFacade customerFacade; // Instantiate the session bean
+    private CustomerFacade customerFacade; // Instantiate the EJB session bean
     
     @Override
     public void init() throws ServletException {
@@ -39,25 +45,27 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-               
+              
         String path= request.getServletPath();
         if (path.equals("/welcome"))
         {
             path = "/welcome";
         }
-        else if (path.equals("/customer")) 
+        else if (path.equals("/customerDetails")) 
         {
             path = "/customerDetails";
         }
         else if (path.equals("/customerForm")) 
         {
+            logger.info("inside if block .. customerForm");
             path = "/customerEntryForm";
         }
         
         // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + path + ".jsp";
+        String urlInsideDoGet = "/WEB-INF/view" + path + ".jsp";
+        logger.info("urlInsideDoGet= "+urlInsideDoGet);
         try {
-                request.getRequestDispatcher(url).forward(request, response);
+                request.getRequestDispatcher(urlInsideDoGet).forward(request, response);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -67,61 +75,133 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-               
+        
         //processRequest(request, response);
-        PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();  
         
-        /* This code is for logging using LOG4J properties file */
-        String prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
-        String file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
-        PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
-        out.println("properties file path = "+prefix+file);
-        logger.info("properties file path = "+prefix+file);
-        /* This code is for logging using LOG4J properties file ....END*/
+        /* Configure the  LOG4J properties file */
         
+            String prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+            String file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
+            PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
+
+        /** Configure LOG4G properties file .. ENDS*/        
         
-        String custName = request.getParameter("custName");
-        String custAddress= request.getParameter("custAddress");
-        
-        
-        Customer custObj = new Customer();
-        
-        // set the value of Customer entity bean properties with the User Input
-        custObj.setCustName(custName);
-        custObj.setCustAddress(custAddress);
-        //custObj.setCustEmail("customer@gmail.com");
-        custObj.setCustEmail(custName+"@gmail.com");
-        
-        try{
-        customerFacade.create(custObj);             // Insert a new customer record in customer entity
-        }
-        catch(Exception e){
-            logger.error(e.getMessage());
-        }
-        //catch(SQLException sqle){
-            //logger.info(sqle.getMessage());
-        //}
+        //Capture the requested URL pattern
+        String path= request.getServletPath();
         
         
+        if (path.equals("/customerEditForm")){
         
-        //After insert of new record,  put the entire list of customers in an application-scoped variable
-        getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+            path = "/customerEditForm";
+        
+            logger.info("Inside doGet..inside if block .. customerEditForm");
+            /*Note:-
+            Before forwarding the request to customer edit form, 
+            Pull the selected customer's details 
+                -customer's id passed as hidden field from the customer details page- (form submit, method=post),
+                 On CLick of the EDIT button against a particulat customer*/
+            
+            /** Process to Pull the selected customer STARTS **/
+                
+                // set the concerned property of Customer entity bean  with the id passed as a hidden field
+                String hid_custID = request.getParameter("hid_custID");
+                logger.info("hid_custID= "+hid_custID);
+                custObj = new Customer();
+                custObj.setCustId(Integer.parseInt(hid_custID));
+
+                logger.info("custObj.getCustId()= "+custObj.getCustId());
+                
+                //Pull the customer's details into an object and put it in an application-scoped variable to be accessed later from the customer edit JSP page
+                try{
+                    getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(custObj.getCustId())); 
+                    //getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(2));
+                }
+                catch(Exception e){
+                    logger.error(e.getMessage());
+                }
+                
+            /** The process of Fetch customer... ENDS **/
+            
+                    
+            /** Forward the request to the customer edit Page **/
+                
+                String url = "/WEB-INF/view" + path + ".jsp";
+                logger.info("edit form url= "+url);
+                try {
+                    request.getRequestDispatcher(url).forward(request, response);
+                } 
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                
+            /** Forward the request to the customer edit Page ... ENDS **/
+            
+        }// END ... if (path.equals("/customerEditForm"))
         
         
-        // Use RequestDispatcher to forward the request back to customer entry form
-        String url = "/WEB-INF/view/customerEntryForm.jsp?customerInserted=yes";
-        try {
-                request.getRequestDispatcher(url).forward(request, response);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+        
+        /*Note:-
+            Add a new customer and forward the request back to the customer entry Page.
+            Before forwaring the request back to customer entry Page, just pull the List of all the customers from customer entity and put the List in an application-scoped variable that can be used later in the customer details Page
+        */
+        
+        /** Process to add the new customer - User Inputs entered in customer entry Form **/
+        
+        if (path.equals("/customerForm")){
+        
+            path = "/customerEntryForm";
+            
+            //Capture the User Inputs
+            String custName = request.getParameter("custName");
+            String custAddress= request.getParameter("custAddress");
+            
+
+            // set the concerned properties of Customer entity bean with the respective User Inputs
+            custObj = new Customer();
+            custObj.setCustName(custName);
+            custObj.setCustAddress(custAddress);
+            custObj.setCustEmail(custName+"@gmail.com");
+
+            // Insert a new customer record in customer entity
+            try{
+            customerFacade.create(custObj);             
             }
+            catch(Exception e){
+                logger.error(e.getMessage());
+            }
+            
+        /** Process to Add the new customer ... END **/ 
+
+            
+            
+        /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page **/
+            
+            getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+            
+        /** Pull the List of all the customers ... END **/ 
+
+            
+            
+        /** Forward the request back to customer entry form **/
+            String url = "/WEB-INF/view" + path + ".jsp?customerInserted=yes";
+            //String url = "/WEB-INF/view/customerEntryForm.jsp?customerInserted=yes";
+            logger.info("second URL inside doPost = "+url);
+            try {
+                    request.getRequestDispatcher(url).forward(request, response);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            
+        /** Forward the request back to customer entry form ... END **/    
+           
+        }
         
-    }
-
     
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
+    //@Override
+    //public String getServletInfo() {
+        //return "Short description";
+    //}
 
+    }
 }
