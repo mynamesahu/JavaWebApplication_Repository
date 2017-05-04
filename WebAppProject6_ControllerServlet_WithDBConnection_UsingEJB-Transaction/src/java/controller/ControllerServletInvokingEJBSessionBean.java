@@ -91,52 +91,115 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         String path= request.getServletPath();
         
         
+        
         if (path.equals("/customerEditForm")){
         
             path = "/customerEditForm";
         
             logger.info("Inside doGet..inside if block .. customerEditForm");
-            /*Note:-
-            Before forwarding the request to customer edit form, 
-            Pull the selected customer's details 
-                -customer's id passed as hidden field from the customer details page- (form submit, method=post),
-                 On CLick of the EDIT button against a particulat customer*/
             
-            /** Process to Pull the selected customer STARTS **/
-                
-                // set the concerned property of Customer entity bean  with the id passed as a hidden field
-                String hid_custID = request.getParameter("hid_custID");
-                logger.info("hid_custID= "+hid_custID);
-                custObj = new Customer();
-                custObj.setCustId(Integer.parseInt(hid_custID));
+            
+            
+            
+            if (request.getParameter("custID_ForViewCustomer") != null){
+                /*Note:-
+                Before forwarding the request to customer edit form, 
+                Pull the selected customer's details 
+                    -customer's id passed as hidden field from the customer details page- (form submit, method=post),
+                     On CLick of the EDIT button against a particulat customer*/
 
-                logger.info("custObj.getCustId()= "+custObj.getCustId());
+                /** Process to Pull the selected customer STARTS **/
+
+                    // set the concerned property of Customer entity bean  with the id passed as a hidden field
+                    String custID = request.getParameter("custID_ForViewCustomer");
+                    logger.info("custID= "+custID);
+                    custObj = new Customer();
+                    custObj.setCustId(Integer.parseInt(custID));
+
+                    logger.info("custObj.getCustId()= "+custObj.getCustId());
+
+                    //Pull the customer's details into an object and put it in an application-scoped variable to be accessed later from the customer edit JSP page
+                    try{
+                        getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(custObj.getCustId())); 
+                        //getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(2));
+                    }
+                    catch(Exception e){
+                        logger.error(e.getMessage());
+                    }
+
+                /** The process of Fetch customer... ENDS **/
+
+
+                /** Forward the request to the customer edit Page **/
+                      
+                    String url = "/WEB-INF/view" + path + ".jsp?customerEdited=no";
+                    logger.info("INSIDE ....if ..custID_ForViewCustomer");
+                    logger.info("cust view url= "+url);
+                    try {
+                        request.getRequestDispatcher(url).forward(request, response);
+                    } 
+                    catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                /** Forward the request to the customer edit Page ... ENDS **/
+            }
+            else if (request.getParameter("custID_ForEditCustomer")!=null){
+                    //Capture the edited User Inputs
+                String custName = request.getParameter("custName");
+                String custAddress= request.getParameter("custAddress");
+                String custEmail= request.getParameter("custEmail");
+
+                //Determine the customer which you want to modify
+                custObj = customerFacade.find(custObj.getCustId());
+
+                // set the concerned properties of Customer entity bean with the respective edited User Inputs
+                custObj.setCustName(custName);
+                custObj.setCustAddress(custAddress);
+                custObj.setCustEmail(custEmail);
                 
-                //Pull the customer's details into an object and put it in an application-scoped variable to be accessed later from the customer edit JSP page
+                // Insert a new customer record in customer entity
                 try{
-                    getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(custObj.getCustId())); 
-                    //getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(2));
+                customerFacade.edit(custObj);             
                 }
                 catch(Exception e){
                     logger.error(e.getMessage());
                 }
+
+            /** Process to Add the new customer ... END **/ 
+
+
+
+            /** Pull the edited  customer data from the customer entity and put the List in an application-scoped variable to be used later in the customer edit Page **/
                 
-            /** The process of Fetch customer... ENDS **/
+                getServletContext().setAttribute("editedCustomerDetails",custObj); 
             
-                    
-            /** Forward the request to the customer edit Page **/
+            /** Pull the List of all the customers ... END **/     
                 
-                String url = "/WEB-INF/view" + path + ".jsp";
-                logger.info("edit form url= "+url);
+                
+            /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page and customer edit Page **/
+
+                getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+
+            /** Pull the List of all the customers ... END **/ 
+
+
+
+            /** Forward the request back to customer entry form **/
+                String url = "/WEB-INF/view" + path + ".jsp?customerEdited=yes";
+                logger.info("INSIDE ....if ..custID_ForEditCustomer");
+                logger.info("cust edit  url= "+url);
                 try {
-                    request.getRequestDispatcher(url).forward(request, response);
-                } 
-                catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                        request.getRequestDispatcher(url).forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+            /** Forward the request back to customer entry form ... END **/  
                 
-            /** Forward the request to the customer edit Page ... ENDS **/
-            
+            }// else if (request.getParameter("custID_ForEditCustomer")!=null) ... ENDS   
+                
+         
         }// END ... if (path.equals("/customerEditForm"))
         
         

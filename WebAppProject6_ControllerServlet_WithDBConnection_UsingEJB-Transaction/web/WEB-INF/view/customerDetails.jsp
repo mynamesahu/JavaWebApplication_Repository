@@ -9,7 +9,7 @@
         
         <script language="javascript">
             function editRecord(id){
-                document.myform.action='http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerEditForm?hid_custID='+id;
+                document.myform.action='http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerEditForm?custID_ForViewCustomer='+id;
                 document.myform.submit();
             }
         </script>
