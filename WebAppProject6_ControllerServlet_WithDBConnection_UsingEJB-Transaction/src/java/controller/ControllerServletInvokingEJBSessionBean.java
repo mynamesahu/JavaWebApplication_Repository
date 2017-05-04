@@ -198,7 +198,60 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
             /** Forward the request back to customer entry form ... END **/  
                 
             }// else if (request.getParameter("custID_ForEditCustomer")!=null) ... ENDS   
+            else if (request.getParameter("custID_ForDeleteCustomer")!=null){
+                    //Capture the edited User Inputs
+                String custName = request.getParameter("custName");
+                String custAddress= request.getParameter("custAddress");
+                String custEmail= request.getParameter("custEmail");
+
+                //Determine the customer which you want to delete
+                custObj = customerFacade.find(custObj.getCustId());
+
+                // set the concerned properties of Customer entity bean with the respective edited User Inputs
+                custObj.setCustName(custName);
+                custObj.setCustAddress(custAddress);
+                custObj.setCustEmail(custEmail);
                 
+                // Insert a new customer record in customer entity
+                try{
+                customerFacade.remove(custObj);             
+                }
+                catch(Exception e){
+                    logger.error(e.getMessage());
+                }
+
+            /** Process to Add the new customer ... END **/ 
+
+                
+            /** Pull the deleted  customer data from the customer entity and put the List in an application-scoped variable to be used later in the customer edit Page **/
+                
+                getServletContext().setAttribute("deletedCustomerDetails",custObj); 
+            
+            /** Pull the List of all the customers ... END **/         
+
+            /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page and customer edit Page **/
+
+                getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+
+            /** Pull the List of all the customers ... END **/ 
+
+
+
+            /** Forward the request back to customer entry form **/
+                String url = "/WEB-INF/view" + path + ".jsp?customerEdited=deleted";
+                logger.info("INSIDE ....if ..custID_ForDeleteCustomer");
+                logger.info("cust delete  url= "+url);
+                try {
+                        request.getRequestDispatcher(url).forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+            /** Forward the request back to customer entry form ... END **/  
+                
+            }// else if (request.getParameter("custID_ForDeleteCustomer")!=null) ... ENDS   
+                
+             
          
         }// END ... if (path.equals("/customerEditForm"))
         

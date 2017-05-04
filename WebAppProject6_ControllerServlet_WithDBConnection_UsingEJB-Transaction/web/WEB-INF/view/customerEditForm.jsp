@@ -10,6 +10,11 @@
                 document.myform.action='http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerEditForm?custID_ForEditCustomer='+id;
                 document.myform.submit();
             }
+            
+            function deleteRecord(id){
+                document.myform.action='http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerEditForm?custID_ForDeleteCustomer='+id;
+                document.myform.submit();
+            }
         </script>
             
     </head>
@@ -17,6 +22,8 @@
     <body>
        
         <c:set var="customerEdited" value="${param.customerEdited}" />
+        
+        customerEdited = <c:out value="${customerEdited}" />
         
         <%--
         <c:if test="${!empty customerEdited}">
@@ -32,6 +39,16 @@
             <b> <c:out value="customer edited successfully" /> </b>
             <c:set var="customer" value="${editedCustomerDetails}" />
         </c:if>
+            
+        
+         <c:if test="${customerEdited.equals('deleted')}">
+            <b> <c:out value="customer deleted successfully" /> </b>
+            <c:set var="customer" value="${deletedCustomerDetails}" />
+        </c:if>
+            
+            
+            
+            
         <br>
         
         <h1>Click this <a href="http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerDetails">link </a> to View customer details</h1>
@@ -43,6 +60,8 @@
             Address : <input type="text" name="custAddress" value="${customer.custAddress}"><br>
             Email : <input type="text" name="custEmail" value="${customer.custEmail}"><br><br>
             <input type="button" name="btn_ChangeSubmit" value="Submit the Changes" onclick="editRecord(${customer.custId});">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" name="btn_DeleteSubmit" value="Delete the Customer" onclick="deleteRecord(${customer.custId});">
         </form>
         
     </body>
