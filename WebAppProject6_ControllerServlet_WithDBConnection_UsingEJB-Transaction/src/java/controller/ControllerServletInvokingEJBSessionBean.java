@@ -18,12 +18,17 @@ import sessionBeans.CustomerFacade;
 public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
     
     /** Declare the variables **/
-        
-          
-        Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
-        
+        String path = "";
+        String url = "";
+        String prefix = "";
+        String file = "";
+        String custID = "";
+        String custName = "";
+        String custAddress = "";
+        String custEmail = "";
         Customer custObj;
-        
+        PrintWriter out;
+        Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
     /** Declare the variables ... END**/
     
     @EJB                                    // injects the EJB
@@ -39,14 +44,15 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         that can be accessed by any JSP page 
         */
         getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
-    }
+        
+    }//init() method ... END
      
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
               
-        String path= request.getServletPath();
+        path= request.getServletPath();
         if (path.equals("/welcome"))
         {
             path = "/welcome";
@@ -62,66 +68,66 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         }
         
         // use RequestDispatcher to forward request internally
-        String urlInsideDoGet = "/WEB-INF/view" + path + ".jsp";
-        logger.info("urlInsideDoGet= "+urlInsideDoGet);
+        url = "/WEB-INF/view" + path + ".jsp";
         try {
-                request.getRequestDispatcher(urlInsideDoGet).forward(request, response);
-            } catch (Exception ex) {
+                request.getRequestDispatcher(url).forward(request, response);
+        } 
+        catch (Exception ex) {
                 ex.printStackTrace();
-            }
-    }
+        }
+    }//doGet() method ... END
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+               
         //processRequest(request, response);
-        PrintWriter out = response.getWriter();  
+        out = response.getWriter();  
         
         /* Configure the  LOG4J properties file */
         
-            String prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
-            String file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
+            prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+            file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
             PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
 
         /** Configure LOG4G properties file .. ENDS*/        
         
+        
+        logger.info("request.getParameter(custID_ForDeleteCustomer) = "+request.getParameter("custID_ForDeleteCustomer"));
+
         //Capture the requested URL pattern
-        String path= request.getServletPath();
+            path= request.getServletPath();
         
         
         
-        if (path.equals("/customerEditForm")){
+        if(path.equals("/customerEditForm")){
         
             path = "/customerEditForm";
         
-            logger.info("Inside doGet..inside if block .. customerEditForm");
             
             
-            
-            
-            if (request.getParameter("custID_ForViewCustomer") != null){
+            /**
+              1. customer edit form - just to display the selected customer 
+            **/
+            if(request.getParameter("custID_ForViewCustomer") != null){
                 /*Note:-
-                Before forwarding the request to customer edit form, 
-                Pull the selected customer's details 
-                    -customer's id passed as hidden field from the customer details page- (form submit, method=post),
-                     On CLick of the EDIT button against a particulat customer*/
+                Before forwarding the request to customer edit form, Pull the selected customer's details 
+                    -customer's id passed as hidden field from the customer-details page's EDIT button On CLick against a particulat customer- (form submit, method=post),
+                */
 
                 /** Process to Pull the selected customer STARTS **/
 
                     // set the concerned property of Customer entity bean  with the id passed as a hidden field
-                    String custID = request.getParameter("custID_ForViewCustomer");
-                    logger.info("custID= "+custID);
+                    custID = request.getParameter("custID_ForViewCustomer");
+                    
                     custObj = new Customer();
                     custObj.setCustId(Integer.parseInt(custID));
-
-                    logger.info("custObj.getCustId()= "+custObj.getCustId());
 
                     //Pull the customer's details into an object and put it in an application-scoped variable to be accessed later from the customer edit JSP page
                     try{
                         getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(custObj.getCustId())); 
-                        //getServletContext().setAttribute("customerDetailsForSelectedCustomer",customerFacade.find(2));
                     }
                     catch(Exception e){
                         logger.error(e.getMessage());
@@ -132,9 +138,7 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
 
                 /** Forward the request to the customer edit Page **/
                       
-                    String url = "/WEB-INF/view" + path + ".jsp?customerEdited=no";
-                    logger.info("INSIDE ....if ..custID_ForViewCustomer");
-                    logger.info("cust view url= "+url);
+                    url = "/WEB-INF/view" + path + ".jsp?customerEdited=no";
                     try {
                         request.getRequestDispatcher(url).forward(request, response);
                     } 
@@ -144,37 +148,39 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
 
                 /** Forward the request to the customer edit Page ... ENDS **/
             }
+            /**
+              2. customer edit form - to Modify the selected customer 
+            **/
             else if (request.getParameter("custID_ForEditCustomer")!=null){
-                    //Capture the edited User Inputs
-                String custName = request.getParameter("custName");
-                String custAddress= request.getParameter("custAddress");
-                String custEmail= request.getParameter("custEmail");
+                
+                //Capture the edited User Inputs
+                    custName = request.getParameter("custName");
+                    custAddress= request.getParameter("custAddress");
+                    custEmail= request.getParameter("custEmail");
 
                 //Determine the customer which you want to modify
-                custObj = customerFacade.find(custObj.getCustId());
+                    custObj = customerFacade.find(custObj.getCustId());
 
                 // set the concerned properties of Customer entity bean with the respective edited User Inputs
-                custObj.setCustName(custName);
-                custObj.setCustAddress(custAddress);
-                custObj.setCustEmail(custEmail);
+                    custObj.setCustName(custName);
+                    custObj.setCustAddress(custAddress);
+                    custObj.setCustEmail(custEmail);
                 
                 // Insert a new customer record in customer entity
-                try{
-                customerFacade.edit(custObj);             
-                }
-                catch(Exception e){
-                    logger.error(e.getMessage());
-                }
+                    try{
+                        customerFacade.edit(custObj);             
+                    }
+                    catch(Exception e){
+                        logger.error(e.getMessage());
+                    }
 
             /** Process to Add the new customer ... END **/ 
-
-
 
             /** Pull the edited  customer data from the customer entity and put the List in an application-scoped variable to be used later in the customer edit Page **/
                 
                 getServletContext().setAttribute("editedCustomerDetails",custObj); 
             
-            /** Pull the List of all the customers ... END **/     
+            /** Pull the edited customer ... END **/     
                 
                 
             /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page and customer edit Page **/
@@ -185,75 +191,93 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
 
 
 
-            /** Forward the request back to customer entry form **/
+            /** Forward the request back to customer edit Page **/
                 String url = "/WEB-INF/view" + path + ".jsp?customerEdited=yes";
-                logger.info("INSIDE ....if ..custID_ForEditCustomer");
-                logger.info("cust edit  url= "+url);
+                
                 try {
-                        request.getRequestDispatcher(url).forward(request, response);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+                    request.getRequestDispatcher(url).forward(request, response);
+                } 
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
-            /** Forward the request back to customer entry form ... END **/  
+            /** Forward the request back to customer edit Page ... END **/  
                 
             }// else if (request.getParameter("custID_ForEditCustomer")!=null) ... ENDS   
+             
+            /**
+              3. customer edit form - to delete the selected customer 
+            **/
             else if (request.getParameter("custID_ForDeleteCustomer")!=null){
-                    //Capture the edited User Inputs
-                String custName = request.getParameter("custName");
-                String custAddress= request.getParameter("custAddress");
-                String custEmail= request.getParameter("custEmail");
+                //Capture the edited User Inputs
+                    custName = request.getParameter("custName");
+                    custAddress= request.getParameter("custAddress");
+                    custEmail= request.getParameter("custEmail");
 
                 //Determine the customer which you want to delete
-                custObj = customerFacade.find(custObj.getCustId());
+                    custObj = customerFacade.find(custObj.getCustId());
+                    
+                    if (custObj != null){
+                    
+                    // set the concerned properties of Customer entity bean with the respective edited User Inputs
+                        custObj.setCustName(custName);
+                        custObj.setCustAddress(custAddress);
+                        custObj.setCustEmail(custEmail);
 
-                // set the concerned properties of Customer entity bean with the respective edited User Inputs
-                custObj.setCustName(custName);
-                custObj.setCustAddress(custAddress);
-                custObj.setCustEmail(custEmail);
-                
-                // Insert a new customer record in customer entity
-                try{
-                customerFacade.remove(custObj);             
-                }
-                catch(Exception e){
-                    logger.error(e.getMessage());
-                }
+                    // Insert a new customer record in customer entity
+                        try{
+                        customerFacade.remove(custObj);             
+                        }
+                        catch(Exception e){
+                            logger.error(e.getMessage());
+                        }
 
-            /** Process to Add the new customer ... END **/ 
-
-                
-            /** Pull the deleted  customer data from the customer entity and put the List in an application-scoped variable to be used later in the customer edit Page **/
-                
-                getServletContext().setAttribute("deletedCustomerDetails",custObj); 
-            
-            /** Pull the List of all the customers ... END **/         
-
-            /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page and customer edit Page **/
-
-                getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
-
-            /** Pull the List of all the customers ... END **/ 
+                /** Process to Add the new customer ... END **/ 
 
 
+                /** Pull the deleted  customer data from the customer entity and put the List in an application-scoped variable to be used later in the customer edit Page **/
 
-            /** Forward the request back to customer entry form **/
-                String url = "/WEB-INF/view" + path + ".jsp?customerEdited=deleted";
-                logger.info("INSIDE ....if ..custID_ForDeleteCustomer");
-                logger.info("cust delete  url= "+url);
-                try {
+                    getServletContext().setAttribute("deletedCustomerDetails",custObj); 
+
+                /** Pull the deleted customer ... END **/         
+
+                /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page and customer edit Page **/
+
+                    getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
+
+                /** Pull the List of all the customers ... END **/ 
+
+
+
+                /** Forward the request back to customer edit Page **/
+                    url = "/WEB-INF/view" + path + ".jsp?customerEdited=deleted";
+
+                    try {
                         request.getRequestDispatcher(url).forward(request, response);
-                    } catch (Exception ex) {
+                    } 
+                    catch (Exception ex) {
                         ex.printStackTrace();
                     }
+                /** Forward the request back to customer entry form ... END **/  
+                }
+                else{ // if (custObj == null) => if the customer is already deleted
+                    /** Forward the request back to customer edit Page **/
+                    url = "/WEB-INF/view" + path + ".jsp?customerEdited=customerDoesntExistToBeDeleted";
 
-            /** Forward the request back to customer entry form ... END **/  
-                
+                    try {
+                        request.getRequestDispatcher(url).forward(request, response);
+                    } 
+                    catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    /** Forward the request back to customer entry form ... END **/  
+                }
+                    
             }// else if (request.getParameter("custID_ForDeleteCustomer")!=null) ... ENDS   
-                
-             
-         
+        
         }// END ... if (path.equals("/customerEditForm"))
+        
+       
         
         
         
@@ -269,26 +293,26 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
             path = "/customerEntryForm";
             
             //Capture the User Inputs
-            String custName = request.getParameter("custName");
-            String custAddress= request.getParameter("custAddress");
+                custName = request.getParameter("custName");
+                custAddress= request.getParameter("custAddress");
+                custEmail= request.getParameter("custEmail");
             
 
             // set the concerned properties of Customer entity bean with the respective User Inputs
-            custObj = new Customer();
-            custObj.setCustName(custName);
-            custObj.setCustAddress(custAddress);
-            custObj.setCustEmail(custName+"@gmail.com");
+                custObj = new Customer();
+                custObj.setCustName(custName);
+                custObj.setCustAddress(custAddress);
+                custObj.setCustEmail(custEmail);
 
             // Insert a new customer record in customer entity
-            try{
-            customerFacade.create(custObj);             
-            }
-            catch(Exception e){
-                logger.error(e.getMessage());
-            }
+                try{
+                customerFacade.create(custObj);             
+                }
+                catch(Exception e){
+                    logger.error(e.getMessage());
+                }
             
         /** Process to Add the new customer ... END **/ 
-
             
             
         /** Pull the List of all the customers from the customer entity and put the List in an application-scoped variable to be used later in the customer details Page **/
@@ -296,28 +320,22 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
             getServletContext().setAttribute("customerDetails",customerFacade.findAll()); 
             
         /** Pull the List of all the customers ... END **/ 
-
             
             
         /** Forward the request back to customer entry form **/
-            String url = "/WEB-INF/view" + path + ".jsp?customerInserted=yes";
-            //String url = "/WEB-INF/view/customerEntryForm.jsp?customerInserted=yes";
-            logger.info("second URL inside doPost = "+url);
+            url = "/WEB-INF/view" + path + ".jsp?customerInserted=yes";
+            
             try {
-                    request.getRequestDispatcher(url).forward(request, response);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                request.getRequestDispatcher(url).forward(request, response);
+            } 
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
             
         /** Forward the request back to customer entry form ... END **/    
            
         }
-        
     
-    //@Override
-    //public String getServletInfo() {
-        //return "Short description";
-    //}
-
-    }
-}
+    }//doPost() method ... END
+    
+}// serv;et class ... END

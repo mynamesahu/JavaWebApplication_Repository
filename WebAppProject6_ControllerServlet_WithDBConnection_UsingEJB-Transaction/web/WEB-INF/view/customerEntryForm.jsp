@@ -5,21 +5,36 @@
     
     <head>
         <title>Input the Customers</title>
+        
+        <style type="text/css">
+                    .succssfulMessage{
+                        color: green;
+                    }
+                    
+                    .warningMessage{
+                        color: red;
+                    }
+        </style>
     </head>
     
     <body>
+        
+        <h2>Click this <a href="http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerDetails">link </a> to View customer details</h1>
+        
+        <br>
+        
         <c:set var="customerInserted" value="${param.customerInserted}" />
         
         <c:if test="${!empty customerInserted}">
-            <b> <c:out value="customer inserted successfully" /> </b>
+            <div class="succssfulMessage"><b> <c:out value="customer inserted successfully" /> </b></div>
         </c:if>
         <br>
-        <h1>Click this <a href="http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerDetails">link </a> to View customer details</h1>
-        <br>
+        
         <b>Enter Customer Details:</b> <br>
         <form name="frm_InputNumbers" action="customerForm" method="POST">
-            <input type="text" name="custName"><br>
-            <input type="text" name="custAddress"><br>
+            Name: <input type="text" name="custName"><br>
+            Address: <input type="text" name="custAddress"><br>
+            Email: <input type="text" name="custEmail"><br>
             <input type="submit">
         </form>
     </body>
