@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 import sessionBeans.CustomerFacade;
 
 
@@ -88,19 +89,35 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         
         /* Configure the  LOG4J properties file */
         
-            prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
-            file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
-            PropertyConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
+            //prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+            //file = getInitParameter("log4j-init-file");          // will return "WEB-INF/log4j.properties") 
+            //PropertyConfigurator.configure(prefix+file);         // properties file (log4j.properties) is configured to be read from the servlet
 
+            //logger.info("Properties file Path = "+prefix+file);
         /** Configure LOG4G properties file .. ENDS*/        
         
         
-        logger.info("request.getParameter(custID_ForDeleteCustomer) = "+request.getParameter("custID_ForDeleteCustomer"));
+        
+            
+            
+            
+            /* Configure the  LOG4J.xml file */
+        
+            prefix =  getServletContext().getRealPath("/");      // will return "D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject3_SimpleServlet_WithDBConnection_UsingJDBC-SQLQuery\build\web"
+            file = getInitParameter("log4j-init-xml");          // will return "WEB-INF/log4j.properties") 
+            DOMConfigurator.configure(prefix+file);                // properties file (log4j.properties) is configured to be read from the servlet
+            logger.info("log4j.xml file Path = "+prefix+file);
+            /** Configure LOG4G properties file .. ENDS*/     
+            
+            
+        //DOMConfigurator.configure("log4j.xml");
 
+        
+       
         //Capture the requested URL pattern
             path= request.getServletPath();
         
-        
+        logger.info("Requested URL pattern Path = "+path);
         
         if(path.equals("/customerEditForm")){
         
@@ -133,7 +150,7 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                         logger.error(e.getMessage());
                     }
 
-                /** The process of Fetch customer... ENDS **/
+                /** The process to pull the selected customer... ENDS **/
 
 
                 /** Forward the request to the customer edit Page **/

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+		
+		<logger name="dev">
+			<level value="info"/>
+		</logger>
+		
+		<logger name="org.apache.log4j">
+			<level value="debug"/>
+		</logger>
+		
+		<logger name="org.eclipse.persistence.logging">
+			<level value="debug"/>
+		</logger>
+		
+		
+		<root>
+			<level value="debug"/>
+			<appender-ref ref="fileOut"/>
+			<appender-ref ref="fileErrorOut"/>
+			<appender-ref ref="consoleOut"/>
+			<appender-ref ref="dbTableOut"/>
+		</root>
+                
+                
+		<appender name="fileOut" class="org.apache.log4j.RollingFileAppender">
+			<param name="File" value="D:/Sambit/NetBeansProjects/SERVER_LOGS_UsingLog4J/WebAppProject6Logs.log"/>
+			<param name="MaxFileSize" value="10000KB"/>
+			<param name="MaxBackupIndex" value="5"/>
+			<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd - HH:mm:ss} %5p [%t] (%F:%L) - %m%n"/>
+			</layout>  
+		</appender>
+
+		<appender name="fileErrorOut" class="org.apache.log4j.RollingFileAppender">
+			<param name="File" value="D:/Sambit/NetBeansProjects/SERVER_LOGS_UsingLog4J/WebAppProject6ErrorLogs.log"/>
+			<param name="MaxFileSize" value="10000KB"/>
+			<param name="MaxBackupIndex" value="5"/>
+			<param name="Threshold" value="error"/>
+			<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd - HH:mm:ss} %5p [%t] (%F:%L) - %m%n"/>
+			</layout>
+		</appender>
+
+		<appender name="consoleOut" class="org.apache.log4j.ConsoleAppender">
+			<param name="Threshold" value="debug"/>
+			<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd - HH:mm:ss} %5p [%t] (%F:%L) - %m%n"/>
+			</layout>
+		</appender>
+                
+                <appender name="dbTableOut" class="org.apache.log4j.jdbc.JDBCAppender">
+			<param name="url" value="jdbc:mysql://localhost:3306/mytestschema"/>
+			<param name="driver" value="com.mysql.jdbc.Driver"/>
+                        <param name="user" value="root"/>
+                        <param name="password" value="nbuser"/>
+                        <param name="sql" value="INSERT INTO LOGS VALUES ('%x', now() ,'%C','%p','%m')"/>
+			<!--layout class="org.apache.log4j.PatternLayout"/-->
+                </appender>
+
+        
+	</log4j:configuration>

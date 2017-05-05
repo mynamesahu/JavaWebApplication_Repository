@@ -4,10 +4,14 @@
     <servlet>
         <servlet-name>ControllerServletInvokingEJBSessionBean</servlet-name>
         <servlet-class>controller.ControllerServletInvokingEJBSessionBean</servlet-class>
-        <init-param>
-            <param-name>log4j-init-file</param-name>
-            <param-value>WEB-INF/log4j.properties</param-value>
-        </init-param>
+            <!--init-param>
+                <param-name>log4j-init-file</param-name>
+                <param-value>WEB-INF/log4j.properties</param-value>
+            </init-param-->
+            <init-param>
+                <param-name>log4j-init-xml</param-name>
+                <param-value>WEB-INF/log4j.xml</param-value>
+            </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
