@@ -5,6 +5,10 @@ import entityBeans.Customer;
 import java.io.*;
 import java.io.PrintWriter;
 import java.sql.*;
+//import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +31,11 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
         String custName = "";
         String custAddress = "";
         String custEmail = "";
+        String custDOB = "";
+        String custDOR = "";
         Customer custObj;
+        DateFormat dateFormat;
+        Date date;
         PrintWriter out;
         Logger logger = Logger.getLogger(ControllerServletInvokingEJBSessionBean.class );
     /** Declare the variables ... END**/
@@ -174,6 +182,11 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                     custName = request.getParameter("custName");
                     custAddress= request.getParameter("custAddress");
                     custEmail= request.getParameter("custEmail");
+                    custDOB= request.getParameter("custDOB");
+                    custDOR= request.getParameter("custDOR");
+                    
+                    logger.info("custDOB= "+custDOB);
+                    logger.info("custDOR= "+custDOR);
 
                 //Determine the customer which you want to modify
                     custObj = customerFacade.find(custObj.getCustId());
@@ -182,6 +195,11 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                     custObj.setCustName(custName);
                     custObj.setCustAddress(custAddress);
                     custObj.setCustEmail(custEmail);
+                    custObj.setCustDOB(custDOB);
+                    custObj.setCustDOR(custDOR);
+                    
+                    logger.info("custObj.getCustDOB() = "+custObj.getCustDOB());
+                    logger.info("custObj.getCustDOR() = "+custObj.getCustDOR());
                 
                 // Insert a new customer record in customer entity
                     try{
@@ -230,6 +248,8 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                     custName = request.getParameter("custName");
                     custAddress= request.getParameter("custAddress");
                     custEmail= request.getParameter("custEmail");
+                    custDOB= request.getParameter("custDOB");
+                    custDOR= request.getParameter("custDOR");
 
                 //Determine the customer which you want to delete
                     custObj = customerFacade.find(custObj.getCustId());
@@ -240,6 +260,8 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                         custObj.setCustName(custName);
                         custObj.setCustAddress(custAddress);
                         custObj.setCustEmail(custEmail);
+                        custObj.setCustDOB(custDOB);
+                        custObj.setCustDOR(custDOR);
 
                     // Insert a new customer record in customer entity
                         try{
@@ -313,19 +335,31 @@ public class ControllerServletInvokingEJBSessionBean extends HttpServlet {
                 custName = request.getParameter("custName");
                 custAddress= request.getParameter("custAddress");
                 custEmail= request.getParameter("custEmail");
-            
-
+                custDOB= request.getParameter("custDOB");
+                
+            // set the customer's DateofRegistration as current date-time and then assign it to a variable.
+                
+                /** cust_DateOfRegistration is of data type - DATETIME. It will accept only yyyy-MM-dd format. 
+                    So you have to first convert the current date time to this format before inserting in to customer TABLE **/
+                     
+                date = new Date();  // current date
+                custDOR =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+                
+                
             // set the concerned properties of Customer entity bean with the respective User Inputs
                 custObj = new Customer();
                 custObj.setCustName(custName);
                 custObj.setCustAddress(custAddress);
                 custObj.setCustEmail(custEmail);
-
+                custObj.setCustDOB(custDOB);
+                custObj.setCustDOR(custDOR);
+                
             // Insert a new customer record in customer entity
                 try{
                 customerFacade.create(custObj);             
                 }
                 catch(Exception e){
+                    logger.info(e.getMessage());
                     logger.error(e.getMessage());
                 }
             

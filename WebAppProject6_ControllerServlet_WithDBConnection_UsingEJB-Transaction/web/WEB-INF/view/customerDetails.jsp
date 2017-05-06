@@ -26,12 +26,24 @@
         --> 
         <!--form name="frm1" action="http://localhost:8080/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/customerForm" method="post"-->
         <form name="myform"  method="post">
-            <Table>
+            <Table border="1">
+                                   
+                    <tr>
+                        <td>Name</td>
+                        <td>Address</td>
+                        <td>Email </td>
+                        <td>Date Of Birth </td>
+                        <td>Date of Registration </td>
+                    </tr>
+                    
                 <c:forEach var="customer" items="${customerDetails}">  
                     <tr>
                         <td><c:out value="${customer.custName}" /></td>
                         <td><c:out value="${customer.custAddress}" /></td>
                         <td><c:out value="${customer.custEmail}" /></td>
+                        <td><c:out value="${customer.custDOB}" /></td>
+                        <td><c:out value="${customer.custDOR}" /></td>
+                        
                         <!--td><input type="button" name="btn_customerEdit" value="EDIT" onclick = this.form.submit();></td-->
                         <td><input type="button" name="btn_customerEdit" value="EDIT" onclick="editRecord(${customer.custId});"></td>
                         

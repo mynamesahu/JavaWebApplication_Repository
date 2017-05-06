@@ -1,0 +1,179 @@
+2017-05-05 - 23:31:23  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:109) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-05 - 23:31:23  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:120) - Requested URL pattern Path = /customerEditForm
+2017-05-05 - 23:31:25  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:109) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-05 - 23:31:25  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:120) - Requested URL pattern Path = /customerEditForm
+2017-05-06 - 17:15:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 17:15:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 17:15:53 ERROR [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:335) - 
+2017-05-06 - 20:28:08  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:28:09  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:28:09  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2013-07-09
+2017-05-06 - 20:28:09  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:28:09  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustDOB() = null
+2017-05-06 - 20:28:09  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOP() = null
+2017-05-06 - 20:28:11  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:340) - 
+2017-05-06 - 20:28:11 ERROR [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:341) - 
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2013-07-09
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustDOB() = null
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOP() = null
+2017-05-06 - 20:28:12  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:340) - 
+2017-05-06 - 20:28:12 ERROR [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:341) - 
+2017-05-06 - 20:30:07  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:69) - inside if block .. customerForm
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2013-07-09
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = advfsd
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = null
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = null
+2017-05-06 - 20:31:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:341) - 
+2017-05-06 - 20:31:45 ERROR [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:342) - 
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2013-07-09
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = Sattwik Sahu
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = null
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = null
+2017-05-06 - 20:36:30  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:341) - 
+2017-05-06 - 20:36:30 ERROR [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:342) - 
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2013-07-09
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = Sattwik Sahu
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = null
+2017-05-06 - 20:40:55  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = null
+2017-05-06 - 20:40:56  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:341) - 
+2017-05-06 - 20:40:56 ERROR [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:342) - 
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2003-07-09
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = Sattwik Sahu
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = 2003-07-09
+2017-05-06 - 20:43:10  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = 2017-05-06
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 1973-07-09
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 2017-05-06
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = Sambit Sahu
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = 1973-07-09
+2017-05-06 - 20:45:35  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = 2017-05-06
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:111) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:122) - Requested URL pattern Path = /customerForm
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:321) - custDOB = 2003-07-09
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:322) - custDOP = 
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:332) - getCustName() = Sattwik Sahu
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:333) - getCustDOB() = 2003-07-09
+2017-05-06 - 20:48:09  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:334) - getCustDOP() = 
+2017-05-06 - 20:48:11  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:341) - Transaction aborted
+2017-05-06 - 20:48:11 ERROR [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:342) - Transaction aborted
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:328) - custDOB = 
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:329) - custDOP = 06/05/2017 21:18:02
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:339) - getCustName() = Sambit Sahu
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:340) - getCustDOB() = 
+2017-05-06 - 21:18:02  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustDOP() = 06/05/2017 21:18:02
+2017-05-06 - 21:18:03  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:348) - Transaction aborted
+2017-05-06 - 21:18:03 ERROR [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:349) - Transaction aborted
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:328) - custDOB = 1973-07-09
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:329) - custDOP = 06/05/2017 21:19:19
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:339) - getCustName() = Sambit Sahu
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:340) - getCustDOB() = 1973-07-09
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustDOP() = 06/05/2017 21:19:19
+2017-05-06 - 21:19:19  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:348) - Transaction aborted
+2017-05-06 - 21:19:19 ERROR [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:349) - Transaction aborted
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:328) - custDOB = 1973-07-09
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:329) - custDOP = 06/05/2017 21:22:09
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:339) - getCustName() = Sambit Sahu
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:340) - getCustDOB() = 1973-07-09
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustDOP() = 06/05/2017 21:22:09
+2017-05-06 - 21:22:09  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:348) - Transaction aborted
+2017-05-06 - 21:22:09 ERROR [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:349) - Transaction aborted
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:330) - custDOB = 1973-07-09
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:331) - custDOP = 2017-48-06 21:48:51
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustName() = Sambit Sahu
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:342) - getCustDOB() = 1973-07-09
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:343) - getCustDOP() = 2017-48-06 21:48:51
+2017-05-06 - 21:48:51  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:350) - Transaction aborted
+2017-05-06 - 21:48:51 ERROR [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:351) - Transaction aborted
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:330) - custDOB = 1973-07-09
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:331) - custDOP = 2017-05-06 21:50:00
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustName() = Sambit Sahu
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:342) - getCustDOB() = 1973-07-09
+2017-05-06 - 21:50:00  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:343) - getCustDOP() = 2017-05-06 21:50:00
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:114) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:125) - Requested URL pattern Path = /customerForm
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:330) - custDOB = 12-07-2003
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:331) - custDOP = 2017-05-06 21:57:56
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:341) - getCustName() = Sattwik Sahu
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:342) - getCustDOB() = 12-07-2003
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:343) - getCustDOP() = 2017-05-06 21:57:56
+2017-05-06 - 21:57:56  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:350) - Transaction aborted
+2017-05-06 - 21:57:56 ERROR [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:351) - Transaction aborted
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:116) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:127) - Requested URL pattern Path = /customerForm
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:332) - custDOB = 1973-07-09
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:333) - custDOP = 2017-05-06 23:20:37
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:343) - getCustName() = Sambit Sahu
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:344) - getCustDOB() = 1973-07-09
+2017-05-06 - 23:20:37  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:345) - getCustDOP() = 2017-05-06 23:20:37
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerForm
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:335) - custDOB = 1973-07-09
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:336) - custDOP = 2017-05-06 23:56:55
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:348) - getCustName() = Sambit Sahu
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:349) - getCustDOB() = 1973-07-09
+2017-05-06 - 23:56:55  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:350) - getCustDOP() = 2017-05-06 23:56:55
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerForm
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:335) - custDOB = 1972-09-05
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:336) - custDOP = 2017-05-06 23:58:02
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:348) - getCustName() = Sudhansu Rath
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:349) - getCustDOB() = 1972-09-05
+2017-05-06 - 23:58:02  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:350) - getCustDOP() = 2017-05-06 23:58:02
+2017-05-07 - 00:06:45  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:75) - inside if block .. customerForm
+2017-05-07 - 00:08:28  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:08:28  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:12:13  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:12:13  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:13:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:13:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:16:35  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:16:35  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:19:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:19:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:19:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:188) - custDOB= 1972-09-05
+2017-05-07 - 00:19:51  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:189) - custDOR= null
+2017-05-07 - 00:20:38  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:20:38  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:20:38  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:188) - custDOB= 1972-09-05
+2017-05-07 - 00:20:38  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:189) - custDOR= null
+2017-05-07 - 00:23:03  INFO [http-listener-1(5)] (ControllerServletInvokingEJBSessionBean.java:75) - inside if block .. customerForm
+2017-05-07 - 00:23:07  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:23:07  INFO [http-listener-1(1)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:188) - custDOB= 1972-09-05
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:189) - custDOR= 2017-05-06 23:58:02.0
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:201) - custObj.getCustDOB() = 1972-09-05
+2017-05-07 - 00:23:18  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:202) - custObj.getCustDOR() = 2017-05-06 23:58:02.0
+2017-05-07 - 00:26:30  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:26:30  INFO [http-listener-1(3)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:26:34  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:26:34  INFO [http-listener-1(2)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm
+2017-05-07 - 00:26:37  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:117) - log4j.xml file Path = D:\Sambit\NetBeansProjects\JavaWebApplication_Repository\WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction\build\web\WEB-INF/log4j.xml
+2017-05-07 - 00:26:37  INFO [http-listener-1(4)] (ControllerServletInvokingEJBSessionBean.java:128) - Requested URL pattern Path = /customerEditForm

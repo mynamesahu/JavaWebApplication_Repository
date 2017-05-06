@@ -35,6 +35,8 @@
             Name: <input type="text" name="custName"><br>
             Address: <input type="text" name="custAddress"><br>
             Email: <input type="text" name="custEmail"><br>
+            Date Of Birth: <input type="text" name="custDOB"><br>
+            
             <input type="submit">
         </form>
     </body>

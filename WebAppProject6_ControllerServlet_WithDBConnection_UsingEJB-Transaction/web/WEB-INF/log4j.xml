@@ -24,7 +24,7 @@
                 
                 
 		<appender name="fileOut" class="org.apache.log4j.RollingFileAppender">
-			<param name="File" value="D:/Sambit/NetBeansProjects/SERVER_LOGS_UsingLog4J/WebAppProject6Logs.log"/>
+			<param name="File" value="D:/Sambit/NetBeansProjects/JavaWebApplication_Repository/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/logs/WebAppProject6.log"/>
 			<param name="MaxFileSize" value="10000KB"/>
 			<param name="MaxBackupIndex" value="5"/>
 			<layout class="org.apache.log4j.PatternLayout">
@@ -33,7 +33,7 @@
 		</appender>
 
 		<appender name="fileErrorOut" class="org.apache.log4j.RollingFileAppender">
-			<param name="File" value="D:/Sambit/NetBeansProjects/SERVER_LOGS_UsingLog4J/WebAppProject6ErrorLogs.log"/>
+			<param name="File" value="D:/Sambit/NetBeansProjects/JavaWebApplication_Repository/WebAppProject6_ControllerServlet_WithDBConnection_UsingEJB-Transaction/logs/WebAppProject6_Error.log"/>
 			<param name="MaxFileSize" value="10000KB"/>
 			<param name="MaxBackupIndex" value="5"/>
 			<param name="Threshold" value="error"/>

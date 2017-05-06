@@ -6,6 +6,9 @@
 package entityBeans;
 
 import java.io.Serializable;
+//import java.sql.Date;
+//import java.util.Date;
+//import java.util.Calendar;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +42,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Customer.findByCustId", query = "SELECT c FROM Customer c WHERE c.custId = :custId"),
     @NamedQuery(name = "Customer.findByCustName", query = "SELECT c FROM Customer c WHERE c.custName = :custName"),
     @NamedQuery(name = "Customer.findByCustAddress", query = "SELECT c FROM Customer c WHERE c.custAddress = :custAddress"),
-    @NamedQuery(name = "Customer.findByCustEmail", query = "SELECT c FROM Customer c WHERE c.custEmail = :custEmail")})
+    @NamedQuery(name = "Customer.findByCustEmail", query = "SELECT c FROM Customer c WHERE c.custEmail = :custEmail"),
+    @NamedQuery(name = "Customer.findByCustDOB", query = "SELECT c FROM Customer c WHERE c.custDOB = :custDOB"),
+    @NamedQuery(name = "Customer.findByCustDOR", query = "SELECT c FROM Customer c WHERE c.custDOR = :custDOR")})
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,21 +52,33 @@ public class Customer implements Serializable {
     @Basic(optional = false)
     @Column(name = "cust_id")
     private Integer custId;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "cust_name")
     private String custName;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "cust_address")
     private String custAddress;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "cust_email")
     private String custEmail;
+    
+    @Basic(optional = true)
+    @Column(name = "cust_DateOfBirth")
+    private String custDOB;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cust_DateOfRegistration")
+    private String custDOR;
 
     public Customer() {
     }
@@ -70,12 +87,16 @@ public class Customer implements Serializable {
         this.custId = custId;
     }
 
-    public Customer(Integer custId, String custName, String custAddress, String custEmail) {
+    public Customer(Integer custId, String custName, String custAddress, String custEmail, String custDOB, String custDOR) {
         this.custId = custId;
         this.custName = custName;
         this.custAddress = custAddress;
         this.custEmail = custEmail;
+        this.custDOB = custDOB;
+        this.custDOR = custDOR;
     }
+
+   
 
     public Integer getCustId() {
         return custId;
@@ -108,6 +129,24 @@ public class Customer implements Serializable {
     public void setCustEmail(String custEmail) {
         this.custEmail = custEmail;
     }
+    
+    public String getCustDOB() {
+        return custDOB;
+    }
+
+    public void setCustDOB(String custDOB) {
+        this.custDOB = custDOB;
+    }
+
+    public String getCustDOR() {
+        return custDOR;
+    }
+
+    public void setCustDOR(String custDOR) {
+        this.custDOR = custDOR;
+    }
+
+    
 
     @Override
     public int hashCode() {
@@ -133,5 +172,8 @@ public class Customer implements Serializable {
     public String toString() {
         return "entityBeans.Customer[ custId=" + custId + " ]";
     }
+
+    
+    
     
 }

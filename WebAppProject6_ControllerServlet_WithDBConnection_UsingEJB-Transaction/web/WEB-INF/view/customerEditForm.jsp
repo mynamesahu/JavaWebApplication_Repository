@@ -73,7 +73,9 @@
         <form name="myform"  method="POST">
             Name : <input type="text" name="custName" value="${customer.custName}"><br>
             Address : <input type="text" name="custAddress" value="${customer.custAddress}"><br>
-            Email : <input type="text" name="custEmail" value="${customer.custEmail}"><br><br>
+            Email : <input type="text" name="custEmail" value="${customer.custEmail}"><br>
+            Date Of Birth : <input type="text" name="custDOB" value="${customer.custDOB}"><br>
+            Date Of Registration : <input type="text" name="custDOR" value="${customer.custDOR}" ><br><br>
             <input type="button" name="btn_ChangeSubmit" value="Submit the Changes" onclick="editRecord(${customer.custId});">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="button" name="btn_DeleteSubmit" value="Delete the Customer" onclick="deleteRecord(${customer.custId});">
